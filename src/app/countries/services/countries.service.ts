@@ -10,8 +10,16 @@ export class CountriesService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // https://restcountries.com/v3.1/alpha/{code}
+  searchCountryByAlphaCode(code: string): Observable<Country[]>{
+    const url = `${this.apiUrl}/alpha/${code}`
+    return this.httpClient.get<Country[]>(url)
+      .pipe(
+        catchError( () => of([]))
+      );
+  }
 
-  // https://restcountries.com/v3.1/capital/{region}
+  // https://restcountries.com/v3.1/capital/{capital}
   searchCapital(queryCapital: string): Observable<Country[]>{
     const url = `${this.apiUrl}/capital/${queryCapital}`
     return this.httpClient.get<Country[]>(url)
@@ -20,7 +28,7 @@ export class CountriesService {
       );
   }
 
-  // https://restcountries.com/v3.1/name/{name}?fullText=true
+  // https://restcountries.com/v3.1/name/{name}
   searchCountry(queryCountry: string): Observable<Country[]>{
     const url = `${this.apiUrl}/name/${queryCountry}`
     return this.httpClient.get<Country[]>(url)
