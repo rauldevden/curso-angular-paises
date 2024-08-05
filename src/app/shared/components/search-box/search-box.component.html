@@ -1,5 +1,6 @@
+<!-- (keydown.enter)="searchBoxSubmit($event.srcElement)" -->
 <input
-  (keydown.enter)="onInputEnter($event.srcElement)"
+  (keyup)="onKeyPress($event.srcElement)"
   [placeholder]="placeholder"
   type="text"
   class="form-control"
