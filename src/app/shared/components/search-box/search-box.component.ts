@@ -13,6 +13,9 @@ export class SearchBoxComponent implements OnInit, OnDestroy{
   @Input()
   public placeholder: string = '';
 
+  @Input()
+  public defaultValue: string = '';
+
   @Output()
   public searchBoxEmitter = new EventEmitter<string>();
 
